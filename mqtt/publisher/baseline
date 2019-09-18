@@ -86,4 +86,4 @@ ADD ./entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["/bin/bash","entrypoint.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
-CMD []
+#CMD []
