@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# -it    : keep STDIN open even if not attached and allocate a pseudo-tty
+# -i     : keep STDIN open even if not attached
+# -t     : allocate a pseudo-tty
 # --rm   : remove container when it exits
 # --name : name for the container
 
-sudo docker run -it --rm --name running-mqtt-publisher mqtt-publisher
+sudo docker run \
+     -i -t \
+	 --rm \
+	 --name running-mqtt-publisher \
+	 mqtt-publisher
