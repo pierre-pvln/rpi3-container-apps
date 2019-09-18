@@ -86,8 +86,4 @@ RUN sudo rm /etc/localtime && \
 ###ENTRYPOINT ["/bin/bash","baseline.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
-<<<<<<< HEAD:mqtt/publisher/baseline
-#CMD []
-=======
 ###CMD []
->>>>>>> c6bbba075127a8c69e7b470a2ae004add8c181c3:mqtt/baseline/baseline
