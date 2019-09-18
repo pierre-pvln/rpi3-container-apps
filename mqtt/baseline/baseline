@@ -78,12 +78,16 @@ RUN sudo rm /etc/localtime && \
 
 # Cancel any pre-defined start-up instruction and allow us to use our own.
 #
-ENTRYPOINT []
+###ENTRYPOINT []
 
 # Add our own entrypoint script.
 #
-ADD ./baseline.sh /usr/local/bin/
-ENTRYPOINT ["/bin/bash","baseline.sh"]
+###ADD ./baseline.sh /usr/local/bin/
+###ENTRYPOINT ["/bin/bash","baseline.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
+<<<<<<< HEAD:mqtt/publisher/baseline
 #CMD []
+=======
+###CMD []
+>>>>>>> c6bbba075127a8c69e7b470a2ae004add8c181c3:mqtt/baseline/baseline
