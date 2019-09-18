@@ -7,6 +7,6 @@
 
 sudo docker run \
      -i -t \
-	 --rm \
-	 --name running-mqtt-publisher \
-	 mqtt-publisher
+     --rm \
+     --name running-mqtt-publisher \
+     mqtt-publisher

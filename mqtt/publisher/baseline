@@ -42,7 +42,7 @@ ENV LANG en_US.UTF-8 \
 # INSTALLING AND CONFIGURING UTILITIES
 # ==========================================
 
-#RUN sudo apt-get install -y \
+RUN sudo apt-get install -y \
     apt-utils \
     ssh \
     nano && \
