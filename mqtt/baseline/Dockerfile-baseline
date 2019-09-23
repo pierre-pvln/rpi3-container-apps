@@ -46,7 +46,7 @@ RUN sudo apt-get install -y \
     apt-utils \
     ssh \
     nano && \
-	sudo apt-get -y autoremove && \
+    sudo apt-get -y autoremove && \
     sudo apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -82,7 +82,7 @@ RUN sudo rm /etc/localtime && \
 
 # Add our own entrypoint script.
 #
-#ADD ./baseline.sh /usr/local/bin/
+ADD ./baseline.sh /usr/local/bin/
 #ENTRYPOINT ["/bin/bash","baseline.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 

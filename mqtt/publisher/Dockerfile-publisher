@@ -1,10 +1,14 @@
 # ==========================================
-# Raspberry Pi 3 baseline Dockerfile
+# Raspberry Pi 3 publisher Dockerfile
 # ==========================================
 
 # Import base(line) image
 #
-FROM pvln/mqtt-baseline:latest
+#FROM pvln/mqtt-baseline:latest
+#
+# use lcoal file
+# 
+FROM mqtt-baseline:latest
 
 LABEL version="0.1" \
       maintainer="Pierre Veelen <pierre@pvln.nl>"
@@ -41,8 +45,8 @@ ENTRYPOINT []
 
 # Add our own entrypoint script.
 #
-ADD ./baseline.sh /usr/local/bin/
-ENTRYPOINT ["/bin/bash","baseline.sh"]
+ADD ./publisher.sh /usr/local/bin/
+ENTRYPOINT ["/bin/bash","publisher.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
 CMD []
