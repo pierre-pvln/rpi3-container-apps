@@ -43,7 +43,6 @@ ENV LANG en_US.UTF-8 \
 # ==========================================
 
 RUN sudo apt-get install -y \
-    apt-utils \
     ssh \
     nano && \
     sudo apt-get -y autoremove && \

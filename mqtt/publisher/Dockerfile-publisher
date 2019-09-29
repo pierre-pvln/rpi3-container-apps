@@ -16,34 +16,21 @@ LABEL version="0.1" \
 # ==========================================
 # START OF INSTALLING UTILITIES AND DEFAULTS
 # ==========================================
-RUN apt-get clean && \
-    apt-get update && \
-    sudo apt-get upgrade -y 
+RUN apt-get clean \
+    && apt-get update \
+    && sudo apt-get upgrade -y 
 
 # ==========================================
 # INSTALLING AND CONFIGURING UTILITIES
 # ==========================================
-# install curl and cleanup
+# install curl, mosquito client and jq and cleanup
 RUN sudo apt-get install -y \
-    curl && \
-    sudo apt-get -y autoremove && \
-    sudo apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# install mosquitto client and cleanup
-RUN sudo apt-add-repository ppa:mosquitto-dev/mosquitto-ppa && \
-    sudo apt-get update && \
-    sudo apt-get -y install mosquitto-clients && \
-    sudo apt-get -y autoremove && \
-    sudo apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# install jq and cleanup
-RUN sudo apt-get update && \
-    sudo apt-get -y install jq && \
-    sudo apt-get -y autoremove && \
-    sudo apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    curl \
+    mosquitto-clients \
+    jq \
+    && sudo apt-get -y autoremove \
+    && sudo apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # ==========================================
 # END OF UTILITIES AND DEFAULTS
@@ -67,7 +54,7 @@ ENTRYPOINT []
 # Add our own entrypoint script.
 #
 ADD ./publisher.sh /usr/local/bin/
-ENTRYPOINT ["/bin/bash","publisher.sh"]
+#ENTRYPOINT ["/bin/bash","publisher.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
-CMD []
+CMD ["/bin/bash"]
