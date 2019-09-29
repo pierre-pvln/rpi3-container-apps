@@ -53,7 +53,7 @@ ENTRYPOINT []
 
 # Add our own entrypoint script.
 #
-ADD ./publisher.sh /usr/local/bin/
+ADD ./subscriber.sh /usr/local/bin/
 #ENTRYPOINT ["/bin/bash","subscriber.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
