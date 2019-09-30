@@ -25,6 +25,7 @@ RUN apt-get clean \
 # ==========================================
 #
 # inspiration: https://flows.nodered.org/node/node-red-node-geofence
+#              https://flows.nodered.org/node/node-red-dashboard/in/Js6ooKgjiJld
 #
 RUN cd /root/.node-red && sudo npm install node-red-node-geofence
 #
