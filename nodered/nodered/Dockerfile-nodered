@@ -24,11 +24,14 @@ RUN apt-get clean \
 # INSTALLING AND CONFIGURING UTILITIES
 # ==========================================
 #
+# inspiration: https://flows.nodered.org/node/node-red-node-geofence
+#
+RUN cd /root/.node-red && sudo npm install node-red-node-geofence
+#
 # inspiration: https://nodered.org/docs/getting-started/raspberrypi 
 #
-# Start nodered on pi and enable autostart
-RUN node-red-pi --max-old-space-size=256 \
-    sudo systemctl enable nodered.service 
+# Enable nodered autostart
+RUN sudo systemctl enable nodered.service 
 
 # ==========================================
 # END OF UTILITIES AND DEFAULTS
@@ -51,8 +54,9 @@ ENTRYPOINT []
 
 # Add our own entrypoint script.
 #
-ADD ./publisher.sh /usr/local/bin/
-#ENTRYPOINT ["/bin/bash","publisher.sh"]
+ADD ./nodered.sh /usr/local/bin/
+ENTRYPOINT ["/bin/bash","nodered.sh"]
 
 # Don't need any specific arguments to be fed into entrypoint 
-CMD ["/bin/bash"]
+CMD []
+#CMD ["/bin/bash"]

@@ -41,15 +41,27 @@ ENV LANG en_US.UTF-8 \
 # ==========================================
 # INSTALLING AND CONFIGURING UTILITIES
 # ==========================================
-
 RUN sudo apt-get install -y \
     ssh \
     nano \
-	build-essential \
-	&& bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered) \
+    curl \    
+    build-essential \
+    systemd \
     && sudo apt-get -y autoremove \
     && sudo apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+# Get nodered installer script
+#
+# https://nodered.org/docs/getting-started/raspberrypi 
+#
+RUN curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered -o nodered-installer
+
+#
+# https://unix.stackexchange.com/questions/485915/send-value-to-a-read-in-a-script
+#
+RUN echo "y\ny" | bash nodered-installer
 
 # ==========================================
 # CONFIGURE TIMEZONE AND LOCALTIME
