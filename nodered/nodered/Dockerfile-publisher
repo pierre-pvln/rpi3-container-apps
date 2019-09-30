@@ -1,0 +1,58 @@
+# ==========================================
+# Raspberry Pi 3 nodered Dockerfile
+# ==========================================
+
+# Import base(line) image
+#
+#FROM pvln/nodered-baseline:latest
+#
+# use lcoal file
+# 
+FROM nodered-baseline:latest
+
+LABEL version="0.1" \
+      maintainer="Pierre Veelen <pierre@pvln.nl>"
+
+# ==========================================
+# START OF INSTALLING UTILITIES AND DEFAULTS
+# ==========================================
+RUN apt-get clean \
+    && apt-get update \
+    && sudo apt-get upgrade -y 
+
+# ==========================================
+# INSTALLING AND CONFIGURING UTILITIES
+# ==========================================
+#
+# inspiration: https://nodered.org/docs/getting-started/raspberrypi 
+#
+# Start nodered on pi and enable autostart
+RUN node-red-pi --max-old-space-size=256 \
+    sudo systemctl enable nodered.service 
+
+# ==========================================
+# END OF UTILITIES AND DEFAULTS
+# ==========================================
+
+# ==========================================
+# ENTRYPOINT & CMD
+# ==========================================
+#
+# Inspiration: http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
+#
+# Prefer ENTRYPOINT to CMD when building executable Docker image and you need a command always to be executed. 
+# Additionally use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
+# Choose CMD if you need to provide a default command and/or arguments that can be overwritten from command line when docker container runs.
+#
+
+# Cancel any pre-defined start-up instruction and allow us to use our own.
+#
+ENTRYPOINT []
+
+# Add our own entrypoint script.
+#
+ADD ./publisher.sh /usr/local/bin/
+#ENTRYPOINT ["/bin/bash","publisher.sh"]
+
+# Don't need any specific arguments to be fed into entrypoint 
+CMD ["/bin/bash"]
